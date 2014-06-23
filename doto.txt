@@ -1,0 +1,10 @@
+
+Here I have attached full source code of google chrome extension. It capture the links we visited and spent time on each links.
+
+I want to save fallowing details
+
+1.Visited URL
+2.Spent Time
+3.System time when visiting each link
+
+
