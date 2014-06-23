@@ -160,3 +160,37 @@ document.addEventListener("DOMContentLoaded", function() {
     "click", togglePause); 
   initialize();
 });
+
+
+$(function() {
+  setTimeout(function() {    
+    collection = {}
+    $("#stats tbody tr").each(function(x, y) {  
+      data = {};
+      var url = $(y).children("td").first().text();
+      var result = url.search("http");     
+      if (result >= 0) {
+        $(y).children("td").each(function(index, obj) {  
+          data[index] = $(obj).text();
+        });
+        collection[x] = data;
+      }       
+    });
+    var postData = JSON.stringify(collection);
+
+    saveTracked(postData);
+  }, 5000);
+  
+})
+
+function saveTracked(data) {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:81/capture_screen/Chrome_Extension/insert.php?test=ravi&data="+data,
+    //data: data,
+    cache: false,
+    success: function(response) {
+      alert("dfdfd");
+    }
+  });
+}//end saveTracked()
